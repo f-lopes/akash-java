@@ -22,7 +22,7 @@ import java.nio.file.Path;
  * </p>
  * Open questions: Should we really use Either in this interface?
  */
-public interface AkashClient {
+public interface Akash {
 
     /**
      * createDeployment -> createLease -> sendManifest ->
@@ -179,7 +179,7 @@ public interface AkashClient {
     );
 
     interface Builder {
-        AkashClient build();
+        Akash build();
     }
 
     static BuilderToApiBaseUrl builder() {

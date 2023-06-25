@@ -1,11 +1,11 @@
 package cloud.quasarch.akash.impl.client;
 
-import cloud.quasarch.akash.AkashClient;
+import cloud.quasarch.akash.Akash;
 import shaded_package.org.apache.commons.lang3.StringUtils;
 
 import java.net.URI;
 
-public class AkashClientBuilder implements AkashClient.BuilderToApiBaseUrl, AkashClient.ApiBaseUrlToAccount, AkashClient.AccountToHttpClient {
+public class AkashClientBuilder implements Akash.BuilderToApiBaseUrl, Akash.ApiBaseUrlToAccount, Akash.AccountToHttpClient {
 
     private String accountAddress;
     private String apiBaseUrl;
@@ -27,7 +27,7 @@ public class AkashClientBuilder implements AkashClient.BuilderToApiBaseUrl, Akas
     }
 
     @Override
-    public AkashClient.AccountToHttpClient forAccount(String accountAddress) {
+    public Akash.AccountToHttpClient forAccount(String accountAddress) {
         if (StringUtils.isEmpty(accountAddress)) {
             throw new IllegalArgumentException("accountAddress should not be null or empty");
         }
@@ -35,7 +35,7 @@ public class AkashClientBuilder implements AkashClient.BuilderToApiBaseUrl, Akas
         return this;
     }
 
-    public AkashClient build() {
+    public Akash build() {
         return new DefaultAkashClient(this.accountAddress, URI.create(this.apiBaseUrl), this.httpClient);
     }
 }

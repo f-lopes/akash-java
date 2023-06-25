@@ -10,7 +10,7 @@ import java.util.stream.StreamSupport;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AkashClientPagedIterableTest {
+public class AkashPagedIterableTest {
 
     @Test
     public void itShouldCallNextOnBufferEnd() {

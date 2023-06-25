@@ -1,6 +1,6 @@
 package cloud.quasarch.akash.impl.client;
 
-import cloud.quasarch.akash.AkashClient;
+import cloud.quasarch.akash.Akash;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -19,7 +19,7 @@ class AkashClientBuilderTest {
     @NullAndEmptySource
     void shouldThrowNullPointerExceptionWhenProvidedApiBaseUrlIsNullOrEmpty(String apiBaseUrl) {
         assertThatThrownBy(
-                () -> AkashClient.builder()
+                () -> Akash.builder()
                         .withApiBaseUrl(apiBaseUrl)
                         .forAccount(null)
                         .build()
@@ -31,7 +31,7 @@ class AkashClientBuilderTest {
     @NullAndEmptySource
     void shouldThrowNullPointerExceptionWhenProvidedAccountAddressIsNullOrEmpty(String accountAddress) {
         assertThatThrownBy(
-                () -> AkashClient.builder()
+                () -> Akash.builder()
                         .withApiBaseUrl(API_BASE_URL)
                         .forAccount(accountAddress)
                         .build()
@@ -42,7 +42,7 @@ class AkashClientBuilderTest {
     @Test
     void shouldThrowNullPointerExceptionWhenProvidedHttpClientSupplierIsNull() {
         assertThatThrownBy(
-                () -> AkashClient.builder()
+                () -> Akash.builder()
                         .withApiBaseUrl(API_BASE_URL)
                         .forAccount(ACCOUNT_ADDRESS)
                         .withHttpClient(null)
@@ -52,12 +52,12 @@ class AkashClientBuilderTest {
 
     @Test
     void shouldBuildAkashClientInstanceWithCustomApiUrl() {
-        final AkashClient akashClient = AkashClient.builder()
+        final Akash akash = Akash.builder()
                 .withApiBaseUrl(API_BASE_URL)
                 .forAccount(ACCOUNT_ADDRESS)
                 .build();
 
-        assertThat(akashClient)
+        assertThat(akash)
                 .usingRecursiveComparison()
                 .comparingOnlyFields("accountAddress", "apiBaseUri")
                 .isEqualTo(

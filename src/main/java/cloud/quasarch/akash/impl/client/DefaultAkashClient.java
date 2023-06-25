@@ -1,6 +1,6 @@
 package cloud.quasarch.akash.impl.client;
 
-import cloud.quasarch.akash.AkashClient;
+import cloud.quasarch.akash.Akash;
 import cloud.quasarch.akash.impl.model.AkashPagedResponse;
 import cloud.quasarch.akash.impl.model.OperationFailure;
 import cloud.quasarch.akash.impl.model.remote.*;
@@ -29,9 +29,9 @@ import static cloud.quasarch.akash.impl.model.remote.AkashErrorType.ClientError;
 import static cloud.quasarch.akash.impl.uri.UriUtils.addQueryParameters;
 
 /**
- * Implementation of {@link AkashClient}.
+ * Implementation of {@link Akash}.
  */
-final class DefaultAkashClient implements AkashClient {
+final class DefaultAkashClient implements Akash {
 
     private static final Logger log = LoggerFactory.getLogger(DefaultAkashClient.class);
 
@@ -131,7 +131,7 @@ final class DefaultAkashClient implements AkashClient {
      * @param owner              ??
      * @param deploymentSequence ??
      * @return Either {@link Deployment} or {@link OperationFailure} on failure
-     * @see AkashClient#getDeployment(String, String)
+     * @see Akash#getDeployment(String, String)
      */
     @Override
     public Either<OperationFailure, Deployment> getDeployment(String owner, String deploymentSequence) {
